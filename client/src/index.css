@@ -1,0 +1,139 @@
+@import "tailwindcss";
+/* @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap'); */
+
+:root {
+  --burgundy:    #780000;
+  --crimson:     #C1121F;
+  --cream:       #FDF0D5;
+  --navy:        #003049;
+  --steel:       #669BBC;
+  --navy-dark:   #001f30;
+  --navy-mid:    #002438;
+  --cream-dim:   #e8d9b8;
+  --cream-muted: #b8a88a;
+}
+
+@layer base {
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--navy-dark);
+    color: var(--cream);
+    font-family: 'DM Sans', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--navy-dark); }
+  ::-webkit-scrollbar-thumb { background: var(--navy); border-radius: 4px; }
+
+  ::selection {
+    background: var(--crimson);
+    color: var(--cream);
+  }
+}
+
+@layer utilities {
+  .font-display { font-family: 'Playfair Display', Georgia, serif; }
+  .font-body    { font-family: 'DM Sans', system-ui, sans-serif; }
+
+  /* Crimson glow */
+  .glow-crimson {
+    box-shadow: 0 0 40px rgba(193, 18, 31, 0.25), 0 0 80px rgba(193, 18, 31, 0.1);
+  }
+  .glow-crimson-sm {
+    box-shadow: 0 0 20px rgba(193, 18, 31, 0.3);
+  }
+
+  /* Grain overlay */
+  .grain::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.35;
+  }
+
+  /* Cream text gradient */
+  .text-gradient-cream {
+    background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dim) 50%, var(--steel) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Crimson text gradient */
+  .text-gradient-crimson {
+    background: linear-gradient(135deg, var(--crimson) 0%, #e63946 50%, var(--burgundy) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Animated underline */
+  .hover-underline {
+    position: relative;
+  }
+  .hover-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--crimson);
+    transition: width 0.3s ease;
+  }
+  .hover-underline:hover::after { width: 100%; }
+
+  /* Card border glow on hover */
+  .card-hover {
+    transition: border-color 0.3s, box-shadow 0.3s, transform 0.2s;
+  }
+  .card-hover:hover {
+    border-color: rgba(193, 18, 31, 0.4) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(193, 18, 31, 0.15);
+    transform: translateY(-2px);
+  }
+}
+
+/* Keyframes */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+@keyframes pulse-ring {
+  0%   { transform: scale(1);   opacity: 0.6; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+.animate-fade-up   { animation: fade-up  0.6s ease forwards; }
+.animate-fade-in   { animation: fade-in  0.4s ease forwards; }
+.animate-delay-100 { animation-delay: 0.1s; opacity: 0; }
+.animate-delay-200 { animation-delay: 0.2s; opacity: 0; }
+.animate-delay-300 { animation-delay: 0.3s; opacity: 0; }
+.animate-delay-400 { animation-delay: 0.4s; opacity: 0; }
+.animate-delay-500 { animation-delay: 0.5s; opacity: 0; }
+
+.pulse-ring::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid var(--crimson);
+  animation: pulse-ring 1.8s ease-out infinite;
+}
