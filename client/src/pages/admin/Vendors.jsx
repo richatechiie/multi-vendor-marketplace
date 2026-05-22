@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { adminAPI } from "../../api";
 import { useToast } from "../../hooks/useToast";
 import Badge from "../../components/Badge";
-import Spinner from "../../components/Spinner";
+import { TableRowSkeleton } from "../../components/Skeleton";
 
 export default function Vendors() {
   const [vendors, setVendors] = useState([]);
@@ -54,7 +54,23 @@ export default function Vendors() {
     }
   };
 
-  if (loading) return <Spinner />;
+  if (loading) return (
+  <div className="bg-white/[0.03] border border-white/8 rounded-2xl overflow-hidden">
+    <table className="w-full">
+      <thead>
+        <tr className="border-b border-white/8">
+          {["Shop","Owner","Email","Status","Commission","Sales","Actions"].map(h => (
+            <th key={h} className="text-left px-4 py-3 text-xs text-gray-400 uppercase tracking-wider">{h}</th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {Array.from({ length: 5 }, (_, i) => <TableRowSkeleton key={i} cols={7} />)}
+      </tbody>
+    </table>
+  </div>
+);
+
 
   return (
     <div>

@@ -41,6 +41,9 @@ export const productAPI = {
   create: (data) => API.post("/products/vendor/create", data),
   update: (uuid, data) => API.put(`/products/vendor/${uuid}`, data),
   delete: (uuid) => API.delete(`/products/vendor/${uuid}`),
+  uploadImage : (formData)    => API.post("/products/vendor/upload-image", formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+  }),
 };
 
 // ── Categories ────────────────────────────────────────────────────────────────

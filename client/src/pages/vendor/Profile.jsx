@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { vendorAPI } from "../../api";
 import { useToast } from "../../hooks/useToast";
 import Badge from "../../components/Badge";
-import Spinner from "../../components/Spinner";
+import { ProfileSkeleton } from "../../components/Skeleton";
 
 const inputStyle = {
   background: "rgba(0,48,73,0.5)",
@@ -61,8 +61,9 @@ export default function Profile() {
   const focusInput  = e => { e.target.style.borderColor = "rgba(193,18,31,0.5)"; e.target.style.boxShadow = "0 0 0 3px rgba(193,18,31,0.08)"; };
   const blurInput   = e => { e.target.style.borderColor = "rgba(102,155,188,0.2)"; e.target.style.boxShadow = "none"; };
 
-  if (loading) return <Spinner />;
 
+  if (loading) return <ProfileSkeleton />;
+  
   const cardStyle = { background: "rgba(0,36,56,0.7)", border: "1px solid rgba(102,155,188,0.12)" };
 
   return (
