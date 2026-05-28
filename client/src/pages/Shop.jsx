@@ -243,7 +243,7 @@ export default function Shop() {
               onFocus={() => suggestions.length > 0 && setShowSuggestions(true)}
               onBlur={() => setTimeout(() => setShowSuggestions(false), 150)}
               placeholder="Search products…"
-              className="w-full bg-white/5 border border-white/10 rounded-xl pl-9 pr-10 py-2.5 text-sm text-white placeholder-gray-600 outline-none focus:border-violet-500/50 transition"
+              className="w-full bg-gray-950 border border-white/10 rounded-xl pl-9 pr-10 py-2.5 text-sm text-white placeholder-gray-600 outline-none focus:border-violet-500/50 transition"
             />
             {/* Debounce loading indicator */}
             {search && search !== debouncedSearch && (
@@ -298,7 +298,7 @@ export default function Shop() {
         <select
           value={category}
           onChange={e => { setCategory(e.target.value); }}
-          className="bg-white/5 border border-white/10 rounded-xl px-3 py-2.5 text-sm text-gray-300 outline-none focus:border-violet-500/50 transition cursor-pointer"
+          className="bg-gray-950 border border-white/10 rounded-xl px-3 py-2.5 text-sm text-gray-300 outline-none focus:border-violet-500/50 transition cursor-pointer"
         >
           <option value="">All Categories</option>
           {cats.map(c => (
@@ -310,7 +310,7 @@ export default function Shop() {
         <select
           value={sort}
           onChange={e => setSort(e.target.value)}
-          className="bg-white/5 border border-white/10 rounded-xl px-3 py-2.5 text-sm text-gray-300 outline-none focus:border-violet-500/50 transition cursor-pointer"
+          className="bg-gray-950 border border-white/10 rounded-xl px-3 py-2.5 text-sm text-gray-300 outline-none focus:border-violet-500/50 transition cursor-pointer"
         >
           <option value="created_at">Newest</option>
           <option value="price">Price</option>
@@ -322,7 +322,7 @@ export default function Shop() {
         <select
           value={order}
           onChange={e => setOrder(e.target.value)}
-          className="bg-white/5 border border-white/10 rounded-xl px-3 py-2.5 text-sm text-gray-300 outline-none focus:border-violet-500/50 transition cursor-pointer"
+          className="bg-gray-950 border border-white/10 rounded-xl px-3 py-2.5 text-sm text-gray-300 outline-none focus:border-violet-500/50 transition cursor-pointer"
         >
           <option value="DESC">High → Low</option>
           <option value="ASC">Low → High</option>

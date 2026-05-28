@@ -406,13 +406,13 @@ export default function Products() {
                 ))}
 
                 <div>
-                  <label className="text-xs text-gray-400 uppercase tracking-wider block mb-1">
+                  <label className="text-xs text-white-40 uppercase tracking-wider block mb-1">
                     Category
                   </label>
                   <select
                     value={form.category_id}
                     onChange={f("category_id")}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white outline-none focus:border-violet-500/50 transition"
+                    className="w-full bg-gray-950 border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white outline-none focus:border-violet-500/50 transition"
                   >
                     <option value="">No category</option>
                     {cats.map((c) => (
@@ -424,13 +424,13 @@ export default function Products() {
                 </div>
 
                 <div>
-                  <label className="text-xs text-gray-400 uppercase tracking-wider block mb-1">
+                  <label className="text-xs text-white-40 uppercase tracking-wider block mb-1">
                     Status
                   </label>
                   <select
                     value={form.status}
                     onChange={f("status")}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white outline-none focus:border-violet-500/50 transition"
+                    className="w-full bg-gray-950 border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white outline-none focus:border-violet-500/50 transition"
                   >
                     <option value="active">Active</option>
                     <option value="draft">Draft</option>
